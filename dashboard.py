@@ -127,3 +127,29 @@ ax.pie(
     textprops={'fontsize': 24}
 )
 st.pyplot(fig)
+
+color_map = {
+    "Sangat dingin":"darkblue", 
+    "Dingin": "blue", 
+    "Normal": "green", 
+    "Hangat": "yellow", 
+    "Panas": "orange"
+}
+
+st.subheader('Hubungan Antara Musim, Suhu, dan Jumlah Penyewa')
+
+fig, ax = plt.subplots(figsize=(16, 10))
+sns.scatterplot(
+    x="season_name", 
+    y="user_count", 
+    hue="suhu", 
+    data=day_df,
+    s=70,
+    palette=color_map
+)
+ax.legend(prop={'size': 20})
+ax.tick_params(axis='x', labelsize=24)
+ax.tick_params(axis='y', labelsize=24)
+ax.set_xlabel("Season", fontsize=28)
+ax.set_ylabel("Users count", fontsize=28)
+st.pyplot(fig)
